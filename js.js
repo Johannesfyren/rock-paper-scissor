@@ -23,6 +23,7 @@ function playRound(playerSelected, computerSelected){
         console.log(`That's a tie! You both chose ${computerSelection}`);
         showResult.textContent = `That's a tie! You both chose ${computerSelection}`;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 2;
     }
@@ -33,6 +34,7 @@ function playRound(playerSelected, computerSelected){
         showResult.textContent = `Computer won! ${computerSelection} beats ${playerSelection}`;
         computerWins++;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 0; //Computer won
     } else if(playerSelection == "paper" && computerSelection == "rock"){
@@ -41,6 +43,7 @@ function playRound(playerSelected, computerSelected){
         showResult.textContent = `Player won! ${playerSelection} beats ${computerSelection}`;
         playerWins++;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 1; //Player won
     }
@@ -51,6 +54,7 @@ function playRound(playerSelected, computerSelected){
         showResult.textContent = `Computer won! ${computerSelection} beats ${playerSelection}`;
         computerWins++;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 0; //Computer won
     } else if(playerSelection == "scissor" && computerSelection == "paper"){
@@ -59,6 +63,7 @@ function playRound(playerSelected, computerSelected){
         showResult.textContent = `Player won! ${playerSelection} beats ${computerSelection}`;
         playerWins++;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 1; //Player won
     }
@@ -69,6 +74,7 @@ function playRound(playerSelected, computerSelected){
         showResult.textContent = `Computer won! ${computerSelection} beats ${playerSelection}`;
         computerWins++;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 0; //Computer won
     } else if(playerSelection == "rock" && computerSelection == "scissor"){
@@ -76,6 +82,7 @@ function playRound(playerSelected, computerSelected){
         showResult.textContent = `Player won! ${playerSelection} beats ${computerSelection}`;
         playerWins++;
         rounds++;
+        console.log(rounds);
         showScore.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
         return 1; //Player won
         
@@ -126,13 +133,33 @@ const showScore = document.querySelector(".showScore")
 // btnScissor.addEventListener("click", playRound("scissor", toString(getComputerChoice)));
 btnRock.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
+    check();
   });
 btnPaper.addEventListener("click", () => {
     playRound("paper", getComputerChoice());
+    check();
 });
 btnScissor.addEventListener("click", () => {
     playRound("scissor", getComputerChoice());
+    check();
 });
 
+function check(){
 
 
+    if (rounds == "5"){
+        console.log(showScore);
+        if (computerWins < playerWins){
+            showScore.textContent = `The computer wins with ${playerWins} over player's ${computerWins}`;
+            showScore.style ="background-color:green";
+        } else if (computerWins > playerWins){
+            showScore.textContent = `The computer wins with ${computerWins} over player's ${playerWins}`;
+            showScore.style ="background-color:green";
+        } else {showScore.textContent = "Its a tie!";}
+
+    rounds=0;
+    computerWins=0;
+    playerWins=0;
+    }
+
+}
