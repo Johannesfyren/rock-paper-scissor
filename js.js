@@ -1,6 +1,5 @@
 function getComputerChoice() { //Computer generates an answer
     chooseSign = Math.floor(Math.random()*3);
-    
     switch (chooseSign){
         case 0: return "rock"
         break;
@@ -14,7 +13,7 @@ function getComputerChoice() { //Computer generates an answer
 function playRound(playerSelected, computerSelected){
     const playerSelection = playerSelected.toLowerCase();
     const computerSelection = computerSelected.toLowerCase();
-    
+   
 
     if (playerSelection == computerSelection){ // TIE
         
@@ -59,20 +58,20 @@ function playGame(){
     let countPlayerWins=0;
 
 
-    for (let i=0; i<5;i++){//Playing a game of 5 rounds
-        let userChoice = prompt("enter your guess");
-        let result = playRound(userChoice, getComputerChoice());
+    // for (let i=0; i<5;i++){//Playing a game of 5 rounds
+    //     let userChoice = prompt("enter your guess");
+    //     let result = playRound(userChoice, getComputerChoice());
         
-        switch (result){
-            case 0: countComputerWins +=1;
-            break;
-            case 1: countPlayerWins +=1;
-            break;
-            default:
-            break;
+    //     switch (result){
+    //         case 0: countComputerWins +=1;
+    //         break;
+    //         case 1: countPlayerWins +=1;
+    //         break;
+    //         default:
+    //         break;
     
-        }
-    }
+    //     }
+    // }
 
     if (countComputerWins < countPlayerWins){
         console.log(`The player wins with ${countPlayerWins} over computer's ${countComputerWins}`)
@@ -82,4 +81,23 @@ function playGame(){
     
 
 }
-playGame();
+//playGame();
+
+
+
+const btnRock = document.querySelector(".rock");
+const btnPaper = document.querySelector(".paper");
+const btnScissor = document.querySelector(".scissor");
+
+// btnRock.addEventListener("click", playRound("rock", toString(getComputerChoice)));
+// btnPaper.addEventListener("click", playRound("paper", toString(getComputerChoice)));
+// btnScissor.addEventListener("click", playRound("scissor", toString(getComputerChoice)));
+btnRock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+  });
+  btnPaper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+  });
+  btnScissor.addEventListener("click", () => {
+    playRound("scissor", getComputerChoice());
+  });
